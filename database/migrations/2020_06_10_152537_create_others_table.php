@@ -25,10 +25,9 @@ class CreateOthersTable extends Migration
             $table->string('campo_8', 255)->nullable();
             $table->string('campo_9', 255)->nullable();
             $table->string('campo_10', 255)->nullable();
-            $table->string('costumer_cpf', 11);
-            $table->foreign('costumer_cpf')->references('cpf')->on('costumers')->onDelete('');
-            $table->foreignId('leads_id')->constrained('leads');
-       
+            $table->string('customer_cpf', 11);
+            $table->bigInteger('leads_id');
+
             $table->timestamps();
         });
     }

@@ -16,17 +16,18 @@ class CreateAdressesTable extends Migration
         Schema::create('adresses', function (Blueprint $table) {
             $table->id();
             $table->string('lougradouro', 255)->nullable();
-            $table->string('numero', 255)->nullable();           
+            $table->string('numero', 255)->nullable();
             $table->string('endereco', 255)->nullable();
             $table->string('complemento', 255)->nullable();
             $table->string('bairro', 100)->nullable();
             $table->string('cep', 10)->nullable();
             $table->string('cidade', 100)->nullable();
             $table->string('uf', 2)->nullable();
-            $table->string('costumer_cpf', 11);
-            $table->foreign('costumer_cpf')->references('cpf')->on('costumers');
-            $table->foreignId('leads_id')->constrained('leads');
-       
+            $table->string('customer_cpf', 11);
+            $table->bigInteger('leads_id');
+            //$table->foreign('costumer_cpf')->references('cpf')->on('costumers');
+            //$table->foreignId('leads_id')->constrained('leads');
+
             $table->timestamps();
         });
     }

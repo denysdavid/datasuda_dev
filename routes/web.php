@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -27,3 +29,5 @@ Route::post('/consulta', 'ClienteController@consulta')->name('consulta.cliente')
 
 Route::get('/viewlista', 'ListaController@view')->name('view.lista');
 Route::post('/lista', 'ListaController@consulta')->name('consulta.lista');
+
+Route::resource('customers', 'CustomersController');

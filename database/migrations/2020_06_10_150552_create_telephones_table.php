@@ -17,10 +17,9 @@ class CreateTelephonesTable extends Migration
             $table->id();
             $table->string('ddd', 3)->nullable();
             $table->string('telefone', 9)->nullable();
-            $table->string('costumer_cpf', 11);
-            $table->foreign('costumer_cpf')->references('cpf')->on('costumers');
-            $table->foreignId('leads_id')->constrained('leads');
-       
+            $table->string('customer_cpf', 11);
+            $table->bigInteger('leads_id');
+
             $table->timestamps();
 
         });

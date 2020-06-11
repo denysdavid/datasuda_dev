@@ -24,10 +24,9 @@ class CreateBanksTable extends Migration
             $table->decimal('vbeneficio', 8, 2)->nullable();
             $table->decimal('vmargem', 8, 2)->nullable();
             $table->decimal('vemprestimo', 8, 2)->nullable();
-            $table->string('costumer_cpf', 11);
-            $table->foreign('costumer_cpf')->references('cpf')->on('costumers');
-            $table->foreignId('leads_id')->constrained('leads');
-       
+            $table->string('customer_cpf', 11);
+            $table->bigInteger('leads_id');
+
 
             $table->timestamps();
         });
