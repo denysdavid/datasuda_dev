@@ -14,12 +14,12 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
+            $table->id();
             $table->string('cpf', 11);
             $table->string('nome', 100);
             $table->string('dtnascimento',8)->nullable();
             $table->string('idade', 3)->nullable();
             $table->timestamps();
-            $table->primary('cpf');
             $table->unique('cpf');
             $table->bigInteger('leads_id')->nullable();
 

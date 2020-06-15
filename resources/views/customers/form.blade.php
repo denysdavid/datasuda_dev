@@ -57,7 +57,7 @@
 
           <div class="col-sm-8">
 
-        {!! Form::text('dtnsacimento', null, ['class' => 'form-control', 'placeholder'=>'Defina a data de nascimento']) !!}
+        {!! Form::text('dtnascimento', null, ['class' => 'form-control', 'placeholder'=>'Defina a data de nascimento']) !!}
 
           </div>
 

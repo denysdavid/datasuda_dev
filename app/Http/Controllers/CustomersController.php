@@ -15,16 +15,28 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-        $customers = Customer::all();
-        //return $customers;
-        return view('customers.grid', compact('customers'));
+    public function index(Request $request)
+{
+//     if ($request->has('search')) {
 
+//   $search = $request->get('search');
 
-    }
+//   $customers = Customer::where('first_name', 'like', "%{$search}%")
+//       ->orWhere('last_name', 'like', "%{$search}%")
+//       ->orWhere('email', 'like', "%{$search}%")
+//       ->orWhere('phone', 'like', "%{$search}%")
+//       ->orWhere('address', 'like', "%{$search}%")
+//       ->paginate(10);
 
+//   $customers->appends(['search' => $search]);
+//   return view('customers.grid', compact('customers', 'search'));
+//       } else {
+  $customers = Customer::all();
+
+  return view('customers.grid', compact('customers'));
+    //    }
+
+}
 
 
     /**
@@ -80,7 +92,7 @@ class CustomersController extends Controller
         if ($customer) {
             return view('customers.form', compact('customer'));
         } else {
-            return redirect()->back();
+          return redirect()->back();
         }
 
     }

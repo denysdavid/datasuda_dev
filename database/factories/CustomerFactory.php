@@ -8,6 +8,8 @@ use Faker\Generator as Faker;
 $factory->define(Customer::class, function (Faker $faker) {
     return [
         //
+
+        'id' => $faker->id,
         'cpf' => $faker->cpf,
         'nome' => $faker->nome,
         'dtnascimento' => $faker->dtnascimento,

@@ -2,8 +2,33 @@
 @section('title', 'Listando todos os registros')
 
 @section('content')
+
 <h1>Listagem de Clientes</h1>
 <hr>
+{!! Form::open(['method' => get, 'route' => 'customers.index', 'class' => 'form-horizontal']) !!}
+
+    <div class="form-row form-group">
+
+
+        {!! Form::label('search', 'Procurar por', ['class' => 'col-sm-2 col-form-label text-right']) !!}
+
+
+        <div class="col-sm-8">
+
+          {!! Form::text('search', isset($search) ? $search : null, ['class' => 'form-control']) !!}
+
+        </div>
+        <div class="col-sm-2">
+
+      {!! Form::submit('procurar', ['class'=>'btn btn-primary']) !!}
+
+        </div>
+
+    </div>
+
+{!! Form::close() !!}
+
+
 <div class="container">
     <table class="table table-bordered table-striped table-sm">
         <thead>
@@ -27,7 +52,9 @@
           <td>{{ $customer->dtnascimento }}</td>
           <td>{{ $customer->idade }}</td>
           <td>
-        <a href="{{ route('customers.edit', ['id' => $customer->id]) }}" class="btn btn-warning btn-sm">Editar</a>
+
+            {{dd($customers)}}
+         <a href="{{ route('customers.edit', ['id' => $customer->id]) }}" class="btn btn-warning btn-sm">Editar</a>
         <form method="POST" action="{{ route('customers.destroy', ['id' => $customer->id]) }}" style="display: inline" onsubmit="return confirm('Deseja excluir este registro?');" >
             @csrf
             <input type="hidden" name="_method" value="delete" >
@@ -42,5 +69,7 @@
       @endforelse
         </tbody>
     </table>
+    {{ $customers->links() }}
 </div>
+
 @endsection
