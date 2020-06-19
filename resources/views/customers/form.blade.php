@@ -1,9 +1,21 @@
-@extends('layouts.app')
-@section('title', 'Registro')
+
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+<h1>
+          @if (isset($customer))
+          Editando registro #{{ $customer->id }}
+          @else
+          Criando novo registro
+          @endif
+</h1>    
+ @stop 
 
 @section('content')
-<h1>Registro</h1>
-<hr>
+
+
 
 <div class="container">
 
@@ -21,11 +33,7 @@
     <div class="card">
         <div class="card-header">
       <span class="card-title">
-          @if (isset($customer))
-        Editando registro #{{ $customer->id }}
-          @else
-        Criando novo registro
-          @endif
+          
       </span>
         </div>
         <div class="card-body">
@@ -73,17 +81,7 @@
           </div>
 
       </div>
-     {{--  <div class="form-row form-group">
-
-          {!! Form::label('address', 'Endereço', ['class' => 'col-form-label col-sm-2 text-right']) !!}
-
-          <div class="col-sm-10">
-
-        {!! Form::textarea('address', null, ['class' => 'form-control', 'placeholder'=>'Defina o endereço completo']) !!}
-
-          </div>
-
-      </div> --}}
+    
         </div>
         <div class="card-footer">
       {!! Form::button('cancelar', ['class'=>'btn btn-danger btn-sm', 'onclick' =>'windo:history.go(-1);']); !!}

@@ -17,24 +17,12 @@ class CustomersController extends Controller
      */
     public function index(Request $request)
 {
-//     if ($request->has('search')) {
+    $customers = Customer::paginate();
 
-//   $search = $request->get('search');
+ 
+        
+    return view('customers.customers',compact('customers'));
 
-//   $customers = Customer::where('first_name', 'like', "%{$search}%")
-//       ->orWhere('last_name', 'like', "%{$search}%")
-//       ->orWhere('email', 'like', "%{$search}%")
-//       ->orWhere('phone', 'like', "%{$search}%")
-//       ->orWhere('address', 'like', "%{$search}%")
-//       ->paginate(10);
-
-//   $customers->appends(['search' => $search]);
-//   return view('customers.grid', compact('customers', 'search'));
-//       } else {
-  $customers = Customer::all();
-
-  return view('customers.grid', compact('customers'));
-    //    }
 
 }
 
@@ -73,9 +61,23 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($cpf)
     {
-        //
+
+        $customer = customer::where('cpf', '=', $cpf)->get();
+
+
+        //         $customer = Customer::findorfail($id);
+
+    //     if (empty($customer[0])) {
+    //         echo 'oi';
+    //     }
+        
+    //  dd($customer);
+
+    
+            return view('customers.customersshow', compact('customer'));
+        
     }
 
     /**

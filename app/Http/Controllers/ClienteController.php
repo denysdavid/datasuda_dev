@@ -25,7 +25,7 @@ class ClienteController extends Controller
     public function view(){
 
 
-        return view('consultacliente');
+        return view('consultacliente'compact('customers'));
 
    }
 
